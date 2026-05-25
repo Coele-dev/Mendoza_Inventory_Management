@@ -38,6 +38,6 @@ try {
     if ($_SERVER['REMOTE_ADDR'] === '127.0.0.1' || $_SERVER['REMOTE_ADDR'] === '::1') {
         die("Database connection failure: " . $e->getMessage());
     } else {
-        die("A secure database connection error occurred. Please try again later.");
+        die("DATABASE CONNECTION ERROR: " . $e->getMessage());
     }
 }
