@@ -40,7 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['role'] = $user['role'] ?? 'manager'; 
 
-                // FIX: Both paths must look outside the "auth" folder using "../"
                 if ($_SESSION['role'] === 'admin') {
                     header("Location: ../admin_dashboard.php");
                 } else {
