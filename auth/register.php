@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } else {
                 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-                // 🌟 DB ARCHITECTURE MUTATION: Accounts default to an 'inactive' status and receive a 'manager' role
+                // Accounts default to an 'inactive' status and receive a 'manager' role
                 $insert_stmt = $pdo->prepare("INSERT INTO accounts (username, email, password, role, status) VALUES (?, ?, ?, 'manager', 'inactive')");
                 $insert_stmt->execute([$username, $email, $hashed_password]);
 
@@ -159,7 +159,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             transition: height 0.2s ease, margin-bottom 0.2s ease;
         }
 
-        /* Uses CSS :has element selector to show up only if a child element exists */
+        /* Element selector to show up only if a child element exists */
         .message-box-spacer:has(.error-msg), 
         .message-box-spacer:has(.success-msg) {
             height: 54px; 
