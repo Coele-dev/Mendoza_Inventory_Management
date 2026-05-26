@@ -34,6 +34,10 @@ try {
     // Log the actual detailed error to your server's secret error log
     error_log("Database connection failure: " . $e->getMessage());
     
-    // TEMPORARILY DISABLED: Showing the full error message for debugging
-    die("DATABASE CONNECTION ERROR: " . $e->getMessage());
+    // Safety Masking: On local XAMPP, show the full error. On Railway production, mask it safely.
+    if ($_SERVER['REMOTE_ADDR'] === '127.0.0.1' || $_SERVER['REMOTE_ADDR'] === '::1') {
+        die("Database connection failure: " . $e->getMessage());
+    } else {
+        die("DATABASE CONNECTION ERROR: " . $e->getMessage());
+    }
 }
